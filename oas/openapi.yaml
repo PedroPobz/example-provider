@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: Product API
   description: PactFlow Product API demo
-  version: 1.0.0
+  version: 2.0.0
 servers:
 - url: /
 paths:
@@ -24,8 +24,7 @@ paths:
                 application/json:
                   value:
                   - id: "1234"
-                    type: food
-                    price: 42
+                    version: "v1"
         "400":
           description: Invalid ID supplied
           content: {}
@@ -43,9 +42,7 @@ paths:
               application/json:
                 value:
                   id: "1234"
-                  type: food
-                  price: 42
-                  name: burger
+                  version: "v1"
         required: true
       responses:
         "200":
@@ -58,9 +55,7 @@ paths:
                 application/json:
                   value:
                     id: "1234"
-                    type: food
-                    price: 42
-                    name: burger
+                    version: "v1"
   /product/{id}:
     get:
       summary: Find product by ID
@@ -87,8 +82,7 @@ paths:
                 application/json:
                   value:
                     id: "1234"
-                    type: food
-                    price: 42
+                    version: "v1"
         "400":
           description: Invalid ID supplied
           content: {}
@@ -100,17 +94,10 @@ components:
     Product:
       required:
       - id
-      - name
-      - price
+      - version
       type: object
       properties:
         id:
           type: string
-        type:
-          type: string
-        name:
-          type: string
         version:
           type: string
-        price:
-          type: number
